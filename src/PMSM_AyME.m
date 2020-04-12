@@ -25,15 +25,20 @@ Tl_eq = Tl/r;
 
 % Constantes Eléctricas
 Pp = 3;
-Lq = 5.8E-3;
-Ld = 6.6E-3;
+L_q = 5.8E-3;
+L_d = 6.6E-3;
 Lls = 0.8E-3;
-Rs = 1.02;
+R_s = 1.02;
 
 lambda_m = 0.01546;
+
+% Constantes Térmicas
+
+R_tsa = 55;     % [°C/W]
+C_t = 1.091;    % [W/(°C/s)]
 
 % Constantes de control
 
 p_i = -5000;
-R_cq = -p_i*Lq;
+R_cq = -p_i*L_q;
 
