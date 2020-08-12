@@ -42,3 +42,6 @@ C_t = 1.091;    % [W/(°C/s)]
 p_i = -5000;
 R_cq = -p_i*L_q;
 
+R_q = -p_i*L_q;
+R_d = -p_i*L_d;
+R_0 = -p_i*Lls;

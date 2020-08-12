@@ -29,3 +29,8 @@ codegen/
 
 # Octave session info
 octave-workspace
+
+
+## Own files 
+# Ignore images in source folder
+src/*.svg
