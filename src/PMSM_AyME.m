@@ -46,10 +46,12 @@ R_q = -p_i*L_q;
 R_d = -p_i*L_d;
 R_0 = -p_i*Lls;
 
-%controlador PID
-n=2.5;
-w_pos=800;
-%Ganancias PID
-ba=n*J_eq*w_pos;
-Ksa=n*J_eq*w_pos*w_pos;
-Ksia=J_eq*w_pos*w_pos*w_pos;
+% Controlador PID
+n = 2.5;
+w_pos = 800;
+
+% Método de sintonía serie correspondiente a 
+% un filtro Butterworth de tercer orden
+ba = n*J_eq*w_pos;
+Ksa = n*J_eq*w_pos*w_pos;
+Ksia = J_eq*w_pos*w_pos*w_pos;
