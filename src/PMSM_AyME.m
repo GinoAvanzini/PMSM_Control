@@ -55,3 +55,49 @@ w_pos = 800;
 ba = n*J_eq*w_pos;
 Ksa = n*J_eq*w_pos*w_pos;
 Ksia = J_eq*w_pos*w_pos*w_pos;
+
+%% Análisis para observador de estado
+clc
+
+syms K_e_theta K_e_omega b_eq_sym J_eq_sym s
+b_eq_sym = 0
+
+A = [0 1
+    0 -b_eq_sym/J_eq_sym ];
+
+C = [1 0];
+
+Ke = [K_e_theta
+    K_e_omega];
+
+A_prime = A - Ke*C;
+
+collect(det(s*eye(2) - A_prime), s)
+
+% Obtenemos el siguiente polinomio:
+% s^2 + ((b_eq + J_eq*K_e_theta)*s)/J_eq + (K_e_theta*b_eq + J_eq*K_e_omega)/J_eq
+
+% Importante: si en el modulador de torque desacoplamos la realimentación
+% de la fricción, podemos considerar el modelo de la planta con b_eq = 0. 
+% De esa forma, se obtiene el siguiente polinomio:
+% s^2 + K_e_theta*s + K_e_omega
+
+p_obs = -3200;
+
+collect( (s-p_obs)^2)
+% Obtenemos s^2 + 6400*s + 10240000
+
+%% Ganancias de observador
+clc
+
+% Igualando término a término los polinomios:
+
+K_e_theta = -b_eq/J_eq - 2*p_obs;
+K_e_omega = p_obs^2 - K_e_theta*b_eq/J_eq;
+
+% Si realizamos el desacople de la fricción en el modulador de torque,
+% las ganancias quedan:
+K_e_theta = -2*p_obs;
+K_e_omega = p_obs^2;
+
+
