@@ -101,3 +101,28 @@ K_e_theta = -2*p_obs;
 K_e_omega = p_obs^2;
 
 
+%% Planificador de trayectoria
+
+% Velocidad máxima del perfil trapezoidal 
+
+t_rise = 0.5;
+t_fall = t_rise;
+t_high = 4;
+
+w_high = (2*pi*r)/(t_rise/2 + t_high + t_fall/2);
+
+%% Ganancias del observador con estado aumentado por acción integral
+
+syms s pobs
+
+collect( (s-pobs)^3)
+clc
+% Vemos que -3*pi = k_e_theta
+% 3*pi^2 = k_e_omega
+% -pi^3 = k_ei
+
+K_e_theta = -3*p_obs;
+K_e_omega = 3*p_obs^2;
+K_ei = -p_obs^3;
+
+
