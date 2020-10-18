@@ -6,7 +6,6 @@ close all
 %% Permanent Magnet Synchronous Motor Field-Oriented Control
 
 clc
-clear variables
 close all
 
 % Constantes Mecánicas
@@ -33,12 +32,11 @@ R_s = 1.02;
 lambda_m = 0.01546;
 
 % Constantes Térmicas
-
 R_tsa = 55;     % [°C/W]
 C_t = 1.091;    % [W/(°C/s)]
+T_amb = 40;     % [°C]
 
 % Constantes de control
-
 p_i = -5000;
 R_cq = -p_i*L_q;
 
@@ -47,7 +45,7 @@ R_d = -p_i*L_d;
 R_0 = -p_i*Lls;
 
 % Controlador PID
-n = 2.5;
+n = 2.5;        % n = (2*zeta + 1)
 w_pos = 800;
 
 % Método de sintonía serie correspondiente a 
